@@ -1,10 +1,9 @@
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import * as dat from 'dat.gui'
 
-// Debug
-const gui = new dat.GUI()
+
+
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -66,7 +65,7 @@ camera.position.z = 2
 scene.add(camera)
 
 // Controls
-// const controls = new OrbitControls(camera, canvas)
+ const controls = new OrbitControls(camera, canvas)
 // controls.enableDamping = true
 
 /**
@@ -84,7 +83,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 const clock = new THREE.Clock()
 
-const tick = () =>
+const animate = () =>
 {
 
     const elapsedTime = clock.getElapsedTime()
@@ -99,7 +98,7 @@ const tick = () =>
     renderer.render(scene, camera)
 
     // Call tick again on the next frame
-    window.requestAnimationFrame(tick)
+    window.requestAnimationFrame(animate)
 }
 
-tick()
+animate()
